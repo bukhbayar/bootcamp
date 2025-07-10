@@ -1,0 +1,23 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:latest
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=user
+      - POSTGRES_DB=bootcamp_db
+    volumes:
+      - database-data:/var/lib/postgresql/data/
+      - ${PWD}/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - postgres-network
+
+volumes:
+  database-data:
+
+networks:
+  postgres-network:
+    driver: bridge
