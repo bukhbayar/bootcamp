@@ -11,7 +11,6 @@ services:
       - POSTGRES_DB=bootcamp_db
     volumes:
       - database-data:/var/lib/postgresql/data/
-      - ${PWD}/init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - postgres-network
 
