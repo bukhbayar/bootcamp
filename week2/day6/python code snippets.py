@@ -1,5 +1,5 @@
 
-# Slide 4: Loading Data
+# Slide 5: Loading Data
 import pandas as pd
 df = pd.read_csv("employees_sample.csv")
 df.head()
@@ -7,14 +7,14 @@ df.head()
 df.tail()
 df.sample(5)
 
-# Slide 5: Basic Inspection
+# Slide 6: Basic Inspection
 df.info()
 df.describe()
 
 df.columns
 df.dtypes
 
-# Slide 6: Checking Data Quality
+# Slide 7: Checking Data Quality
 df.isnull().sum()
 df.duplicated().sum()
 
