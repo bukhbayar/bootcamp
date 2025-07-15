@@ -13,6 +13,18 @@ services:
       - database-data:/var/lib/postgresql/data/
     networks:
       - postgres-network
+    container_name: postgres
+  jupyter:
+    build:
+      context: .
+      dockerfile: ./docker/jupyter/Dockerfile
+    volumes:
+      - ./work:/home/jovyan/work
+      - ./notebooks:/home/jovyan/notebooks
+    ports:
+      - 8888:8888
+    command: "start-notebook.sh --NotebookApp.token="
+    container_name: jupyter_notebook
 
 volumes:
   database-data:
