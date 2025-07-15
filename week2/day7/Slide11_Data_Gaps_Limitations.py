@@ -11,3 +11,6 @@ print(missing_percentage)
 print("\nRecommendation:")
 print("- 'cabin' has too many missing values → consider dropping it.")
 print("- 'embarked' and 'age' → consider filling or imputing.")
+
+
+#test
