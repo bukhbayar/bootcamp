@@ -1,0 +1,34 @@
+{
+    "employees": [
+        {
+            "id": 1,
+            "name": "Alice",
+            "age": 29,
+            "department": "Engineering",
+            "skills": {
+                "python": 4,
+                "sql": 3
+            }
+        },
+        {
+            "id": 2,
+            "name": "Bob",
+            "age": 34,
+            "department": "Sales",
+            "skills": {
+                "python": 2,
+                "sql": 4
+            }
+        },
+        {
+            "id": 3,
+            "name": "Charlie",
+            "age": 25,
+            "department": "Marketing",
+            "skills": {
+                "python": 3,
+                "sql": 2
+            }
+        }
+    ]
+}
