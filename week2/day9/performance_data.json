@@ -1,0 +1,29 @@
+{
+    "performance": [
+        {
+            "id": 1,
+            "review_score": 4.5,
+            "tenure_years": 3
+        },
+        {
+            "id": 2,
+            "review_score": 4.2,
+            "tenure_years": 4
+        },
+        {
+            "id": 3,
+            "review_score": 3.8,
+            "tenure_years": 2
+        },
+        {
+            "id": 4,
+            "review_score": 4.9,
+            "tenure_years": 6
+        },
+        {
+            "id": 5,
+            "review_score": 3.5,
+            "tenure_years": 1
+        }
+    ]
+}
