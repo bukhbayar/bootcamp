@@ -32,7 +32,7 @@ def load_and_merge_data(**kwargs):
 def insert_into_postgres(**kwargs):
     df = pd.read_csv("/opt/airflow/dags/enriched_employees.csv")
     conn = psycopg2.connect(
-        dbname="airflow_db",
+        dbname="airflow",
         user="airflow",
         password="airflow",
         host="postgres",
