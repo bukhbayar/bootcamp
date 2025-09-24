@@ -1,0 +1,12 @@
+
+version: 2
+
+models:
+  - name: dim_customers
+    description: "Customers with full name and email"
+    columns:
+      - name: customer_code
+        description: "The primary key for this table"
+        data_tests:
+          - unique
+          - not_null

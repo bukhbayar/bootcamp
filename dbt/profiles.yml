@@ -1,0 +1,12 @@
+dbt_demo2:
+  outputs:
+    dev:
+      dbname: bootcamp_db
+      host: localhost
+      pass: password
+      port: 5432
+      schema: public
+      threads: 5
+      type: postgres
+      user: user
+  target: dev

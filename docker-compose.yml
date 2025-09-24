@@ -44,6 +44,45 @@ services:
     networks:
       - postgres-network
     container_name: postgres
+  nifi:
+    image: apache/nifi:latest
+    container_name: nifi
+    ports:
+      - "8443:8443"
+    environment:
+      NIFI_WEB_HTTPS_HOST: "0.0.0.0"
+      NIFI_WEB_HTTPS_PORT: "8443"
+    volumes:
+      - nifi_state:/opt/nifi/nifi-current/state
+      - nifi_db:/opt/nifi/nifi-current/database_repository
+      - nifi_flowfile:/opt/nifi/nifi-current/flowfile_repository
+      - nifi_content:/opt/nifi/nifi-current/content_repository
+      - nifi_prov:/opt/nifi/nifi-current/provenance_repository
+    restart: unless-stopped
+  kafka:
+    image: bitnami/kafka:3.7
+    container_name: kafka
+    ports:
+      - "9094:9094"         # host access
+    environment:
+      # ---- KRaft (no ZooKeeper) ----
+      KAFKA_ENABLE_KRAFT: "yes"
+      KAFKA_CFG_NODE_ID: "1"
+      KAFKA_CFG_PROCESS_ROLES: "broker,controller"
+      KAFKA_CFG_CONTROLLER_QUORUM_VOTERS: "1@kafka:9093"
+
+      # ---- Listeners (internal + external) ----
+      KAFKA_CFG_LISTENERS: "PLAINTEXT://:9092,PLAINTEXT_HOST://:9094,CONTROLLER://:9093"
+      KAFKA_CFG_ADVERTISED_LISTENERS: "PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:9094"
+      KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP: "CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT"
+      KAFKA_CFG_CONTROLLER_LISTENER_NAMES: "CONTROLLER"
+      KAFKA_CFG_INTER_BROKER_LISTENER_NAME: "PLAINTEXT"
+
+      # Allow plaintext for local dev (don’t use in prod)
+      ALLOW_PLAINTEXT_LISTENER: "yes"
+    volumes:
+      - kafka_data:/bitnami/kafka
+    restart: unless-stopped
   # jupyter:
   #   build:
   #     context: .
@@ -59,6 +98,12 @@ services:
 volumes:
   database-data:
   metabase-data:
+  nifi_state: {}
+  nifi_db: {}
+  nifi_flowfile: {}
+  nifi_content: {}
+  nifi_prov: {}
+  kafka_data: {}
 
 networks:
   postgres-network:

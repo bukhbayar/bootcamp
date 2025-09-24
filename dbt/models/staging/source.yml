@@ -1,0 +1,44 @@
+version: 2
+
+sources:
+  - name: raw
+    database: bootcamp_db
+    schema: public
+    tables:
+      - name: customers
+        description: "Source table containing customer data"
+        columns:
+          - name: customer_code
+            description: "The primary key for this table"
+          - name: first_name
+            description: "First name of the customer"
+          - name: last_name
+            description: "Last name of the customer"
+          - name: email
+            description: "Email address of the customer"
+      - name: transactions
+        description: "Source table containing transaction data"
+        columns:
+          - name: transaction_id
+            description: "Unique identifier for each transaction"
+          - name: account_id
+            description: "Account associated with the transaction"
+          - name: amount
+            description: "Amount of the transaction"
+          - name: currency
+            description: "Currency of the transaction"
+          - name: transaction_date
+            description: "Date of the transaction"
+          - name: status
+            description: "Status of the transaction (e.g., completed, pending)"
+      - name: accounts
+        description: "Source table containing account data"
+        columns:
+          - name: account_id
+            description: "Unique identifier for each account"
+          - name: account_type
+            description: "Type of the account (e.g., savings, checking)"
+          - name: balance
+            description: "Current balance of the account"
+          - name: customer_id
+            description: "ID of the customer who owns the account"

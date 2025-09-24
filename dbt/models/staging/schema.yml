@@ -1,0 +1,32 @@
+
+version: 2
+
+models:
+  - name: stg_customers
+    description: "customers with full name and email"
+    columns:
+      - name: customer_code
+        description: "The primary key for this table"
+        data_tests:
+          - unique
+          - not_null
+      - name: full_name
+        description: "CONTACT from first and last name"
+      - name: email
+        description: "Email address of the customer"
+  - name: stg_transactions
+    description: "transactions with account id and amount"
+    columns:
+      - name: transaction_id
+        description: "Unique identifier for each transaction"
+        data_tests:
+          - unique
+          - not_null
+  - name: stg_accounts
+    description: "accounts with account type and balance"
+    columns:
+      - name: account_id
+        description: "Unique identifier for each account"
+        data_tests:
+          - unique
+          - not_null
