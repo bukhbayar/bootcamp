@@ -1,0 +1,13 @@
+dbt_snowflake2:
+  outputs:
+    dev:
+      account: ltscdiv-gw16285
+      database: SNOWFLAKE_SAMPLE_DATA
+      password: '@MOngolia123456'
+      role: ACCOUNTADMIN
+      schema: TPCH_SF100
+      threads: 2
+      type: snowflake
+      user: bukhbayar
+      warehouse: COMPUTE_WH
+  target: dev

@@ -1,0 +1,6 @@
+
+version: 2
+
+models:
+  - name: dbt_customer
+    description: "customers with full name and email"

@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: snowflake
+    database: SNOWFLAKE_SAMPLE_DATA
+    schema: TPCH_SF100
+    tables:
+      - name: customer
